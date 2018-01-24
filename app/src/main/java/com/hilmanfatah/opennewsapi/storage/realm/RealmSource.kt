@@ -7,7 +7,7 @@
  * https://www.linkedin.com/in/hilman-nur-fatah-107001b6/
  */
 
-package elfatahwashere.com.tokopedianews.storage.model
+package com.hilmanfatah.opennewsapi.storage.realm
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

@@ -1,11 +1,11 @@
-package com.hilmanfatah.opennewsapi.domain.storage.repository
+package com.hilmanfatah.opennewsapi.storage.repository
 
 import com.hilmanfatah.opennewsapi.api.NewsService
 import com.hilmanfatah.opennewsapi.domain.model.SourceResponse
-import com.hilmanfatah.opennewsapi.domain.repository.NewsRepository
-import com.hilmanfatah.opennewsapi.domain.storage.toPojo
-import com.hilmanfatah.opennewsapi.domain.storage.toRealm
-import elfatahwashere.com.tokopedianews.storage.model.RealmSource
+import com.hilmanfatah.opennewsapi.domain.repository.SourceRepository
+import com.hilmanfatah.opennewsapi.storage.realm.RealmSource
+import com.hilmanfatah.opennewsapi.storage.toPojo
+import com.hilmanfatah.opennewsapi.storage.toRealm
 import io.reactivex.Flowable
 import io.realm.Realm
 import java.util.*
@@ -14,8 +14,7 @@ import javax.inject.Inject
 /**
  * Created by hilmanfatah on 24/01/18.
  */
-class NewsRepositoryImpl : NewsRepository {
-
+class SourceRepositoryImpl : SourceRepository {
     @Inject
     lateinit var newsService: NewsService
 
@@ -47,5 +46,6 @@ class NewsRepositoryImpl : NewsRepository {
         sourceResponse.sources = realmSourceList.toPojo()
         return Flowable.just(sourceResponse)
     }
+
 
 }
