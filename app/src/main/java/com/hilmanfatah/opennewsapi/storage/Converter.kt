@@ -1,18 +1,18 @@
-package com.hilmanfatah.opennewsapi.domain.storage
+package com.hilmanfatah.opennewsapi.storage
 
 import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.domain.model.UrlToLogos
-import elfatahwashere.com.tokopedianews.storage.model.RealmArticle
-import elfatahwashere.com.tokopedianews.storage.model.RealmLogo
-import elfatahwashere.com.tokopedianews.storage.model.RealmSource
+import com.hilmanfatah.opennewsapi.storage.realm.RealmArticle
+import com.hilmanfatah.opennewsapi.storage.realm.RealmLogo
+import com.hilmanfatah.opennewsapi.storage.realm.RealmSource
 import java.util.*
 
 /**
  * Created by hilmanfatah on 24/01/18.
  */
 fun UrlToLogos.toRealm(): RealmLogo {
-    val realmLogo = elfatahwashere.com.tokopedianews.storage.model.RealmLogo()
+    val realmLogo = RealmLogo()
     realmLogo.large = this.large
     realmLogo.medium = this.medium
     realmLogo.small = this.small
@@ -29,7 +29,7 @@ fun RealmLogo.toPojo(): UrlToLogos {
 
 
 fun ArticlesItem.toRealm(articleSource: String): RealmArticle {
-    val realmArticle = elfatahwashere.com.tokopedianews.storage.model.RealmArticle()
+    val realmArticle = RealmArticle()
     realmArticle.source = articleSource
     realmArticle.publishedAt = this.publishedAt
     realmArticle.author = this.author
@@ -65,7 +65,7 @@ fun List<ArticlesItem>.toRealm(articleSource: String): ArrayList<RealmArticle> {
 }
 
 fun SourcesItem.toRealm(): RealmSource {
-    val realmSource = elfatahwashere.com.tokopedianews.storage.model.RealmSource()
+    val realmSource = RealmSource()
     realmSource.category = this.category
     realmSource.description = this.description
     realmSource.id = this.id

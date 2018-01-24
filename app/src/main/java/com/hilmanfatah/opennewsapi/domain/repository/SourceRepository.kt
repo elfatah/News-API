@@ -6,6 +6,7 @@ import io.reactivex.Flowable
 /**
  * Created by hilmanfatah on 24/01/18.
  */
-interface NewsRepository {
+interface SourceRepository {
     fun getSourcesList(category: String, country: String, language: String): Flowable<SourceResponse>
+
 }
