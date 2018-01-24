@@ -1,10 +1,13 @@
 package com.hilmanfatah.opennewsapi.presentation.home
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
+import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.home.adapter.SourceListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -24,11 +27,16 @@ class MainActivity : BaseActivity() {
         NewsApplication.applicationComponent.inject(this)
         setUpAdapter()
         setUpRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
         loadData()
     }
 
     private fun loadData() {
         homePresenter.getSourcesList()
+                .compose(bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe { list.isRefreshing = true }
@@ -54,6 +62,12 @@ class MainActivity : BaseActivity() {
     private fun setUpAdapter() {
 
         sourceListAdapter = SourceListAdapter(this)
+        sourceListAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                Toast.makeText(this@MainActivity, sourceListAdapter.mDatas[position].name, Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 
 

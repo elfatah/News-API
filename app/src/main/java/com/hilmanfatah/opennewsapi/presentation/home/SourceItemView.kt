@@ -13,12 +13,15 @@ class SourceItemView(
         itemView: View,
         mItemClickListener: BaseRecyclerViewAdapter.OnItemClickListener?,
         mLongItemClickListener: BaseRecyclerViewAdapter.OnLongItemClickListener?)
-    : BaseItemViewHolder<SourcesItem>(itemView, mItemClickListener, mLongItemClickListener) {
+    : BaseItemViewHolder<SourcesItem>(itemView, mItemClickListener, mLongItemClickListener), View.OnClickListener {
 
 
     override fun bind(data: SourcesItem, position: Int) {
-        itemView.ivSource.setImageURI(data.urlsToLogos?.medium ?: "")
+        itemView.ivSource.setImageURI("http://lorempixel.com/400/200/technics/" + position)
         itemView.tvSourceDesc.text = data.description
         itemView.tvSourceTitle.text = data.name
+        itemView.setOnClickListener { onClick(it) }
     }
+
+
 }

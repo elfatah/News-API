@@ -18,7 +18,5 @@ class HomePresenterImpl : HomePresenter {
     override fun getSourcesList(): Flowable<List<SourcesItem>?> =
             getNewsResourcesListInteractor
                     .execute("", "", "en")
-                    .map { it.sources }
-//    Flowable.empty()
 
 }

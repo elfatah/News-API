@@ -1,6 +1,6 @@
 package com.hilmanfatah.opennewsapi.domain.interactor.sources
 
-import com.hilmanfatah.opennewsapi.domain.model.SourceResponse
+import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import io.reactivex.Flowable
 
 /**
@@ -8,5 +8,5 @@ import io.reactivex.Flowable
  */
 interface GetNewsResourcesListInteractor {
 
-    fun execute(category: String, country: String, language: String): Flowable<SourceResponse>
+    fun execute(category: String, country: String, language: String): Flowable<List<SourcesItem>?>
 }
