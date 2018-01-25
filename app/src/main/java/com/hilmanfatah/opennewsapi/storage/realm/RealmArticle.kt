@@ -10,6 +10,7 @@
 package com.hilmanfatah.opennewsapi.storage.realm
 
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
 
 open class RealmArticle : RealmObject() {
@@ -24,6 +25,7 @@ open class RealmArticle : RealmObject() {
 
     var description: String? = null
 
+    @PrimaryKey
     var title: String? = null
 
     var url: String? = null
