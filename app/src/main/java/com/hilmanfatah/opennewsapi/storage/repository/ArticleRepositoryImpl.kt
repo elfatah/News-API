@@ -3,9 +3,9 @@ package com.hilmanfatah.opennewsapi.storage.repository
 import com.hilmanfatah.opennewsapi.api.NewsService
 import com.hilmanfatah.opennewsapi.domain.model.ArticleResponse
 import com.hilmanfatah.opennewsapi.domain.repository.ArticleRepository
+import com.hilmanfatah.opennewsapi.storage.articlesToPojos
+import com.hilmanfatah.opennewsapi.storage.articlesToRealm
 import com.hilmanfatah.opennewsapi.storage.realm.RealmArticle
-import com.hilmanfatah.opennewsapi.storage.toPojos
-import com.hilmanfatah.opennewsapi.storage.toRealm
 import io.reactivex.Flowable
 import io.realm.Realm
 import java.util.*
@@ -27,7 +27,7 @@ class ArticleRepositoryImpl : ArticleRepository {
                         val realm = Realm.getDefaultInstance()
                         it.articles.let {
                             realm.executeTransaction { realm ->
-                                realm.insertOrUpdate(it!!.toRealm(source))
+                                realm.insertOrUpdate(it!!.articlesToRealm(source))
                             }
                         }
 
@@ -42,7 +42,7 @@ class ArticleRepositoryImpl : ArticleRepository {
         val realmArticleList = ArrayList<RealmArticle>()
         val realmArticle = realm.where(RealmArticle::class.java).equalTo("source", source).findAll()
         realmArticleList.addAll(realmArticle)
-        articleResponse.articles = realmArticleList.toPojos()
+        articleResponse.articles = realmArticleList.articlesToPojos()
         return Flowable.just(articleResponse)
     }
 }

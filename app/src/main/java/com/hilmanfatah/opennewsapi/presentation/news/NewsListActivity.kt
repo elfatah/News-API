@@ -3,10 +3,12 @@ package com.hilmanfatah.opennewsapi.presentation.news
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
 import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
+import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.news.adapter.ArticleListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -57,6 +59,8 @@ class NewsListActivity : BaseActivity() {
                 .compose(bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { list.isRefreshing = true }
+                .doOnTerminate { list.isRefreshing = false }
                 .subscribe(this::setUpData)
 
     }
@@ -77,6 +81,13 @@ class NewsListActivity : BaseActivity() {
 
     private fun setUpAdapter() {
         articleListAdapter = ArticleListAdapter(this)
+        articleListAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener {
+            override fun onItemClick(view: View, position: Int) {
+                startActivity(NewsDetailActivity.createIntent(this@NewsListActivity, articleListAdapter.mDatas[position].url!!, articleListAdapter.mDatas[position].title!!))
+
+            }
+
+        }
 
     }
 
