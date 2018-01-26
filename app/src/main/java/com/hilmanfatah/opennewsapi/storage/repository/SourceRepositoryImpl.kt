@@ -4,8 +4,8 @@ import com.hilmanfatah.opennewsapi.api.NewsService
 import com.hilmanfatah.opennewsapi.domain.model.SourceResponse
 import com.hilmanfatah.opennewsapi.domain.repository.SourceRepository
 import com.hilmanfatah.opennewsapi.storage.realm.RealmSource
-import com.hilmanfatah.opennewsapi.storage.toPojo
-import com.hilmanfatah.opennewsapi.storage.toRealm
+import com.hilmanfatah.opennewsapi.storage.sourcesToPojo
+import com.hilmanfatah.opennewsapi.storage.sourcesToRealm
 import io.reactivex.Flowable
 import io.realm.Realm
 import java.util.*
@@ -27,7 +27,7 @@ class SourceRepositoryImpl : SourceRepository {
                         val realm = Realm.getDefaultInstance()
                         it.sources.let {
                             realm.executeTransaction { realm ->
-                                realm.insertOrUpdate(it!!.toRealm())
+                                realm.insertOrUpdate(it!!.sourcesToRealm())
                             }
                         }
 
@@ -43,7 +43,7 @@ class SourceRepositoryImpl : SourceRepository {
         val realmSourceList = ArrayList<RealmSource>()
         val realmSource = realm.where(RealmSource::class.java).findAll()
         realmSourceList.addAll(realmSource)
-        sourceResponse.sources = realmSourceList.toPojo()
+        sourceResponse.sources = realmSourceList.sourcesToPojo()
         return Flowable.just(sourceResponse)
     }
 

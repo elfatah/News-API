@@ -28,7 +28,7 @@ fun RealmLogo.toPojo(): UrlToLogos {
 }
 
 
-fun ArticlesItem.toRealm(articleSource: String): RealmArticle {
+fun ArticlesItem.articleToRealm(articleSource: String): RealmArticle {
     val realmArticle = RealmArticle()
     realmArticle.source = articleSource
     realmArticle.publishedAt = this.publishedAt
@@ -41,7 +41,7 @@ fun ArticlesItem.toRealm(articleSource: String): RealmArticle {
 }
 
 
-fun RealmArticle.toPojo(): ArticlesItem {
+fun RealmArticle.articleToPojo(): ArticlesItem {
     val article = ArticlesItem()
     article.publishedAt = this.publishedAt
     article.author = this.author
@@ -52,19 +52,19 @@ fun RealmArticle.toPojo(): ArticlesItem {
     return article
 }
 
-fun List<RealmArticle>.toPojos(): ArrayList<ArticlesItem> {
+fun List<RealmArticle>.articlesToPojos(): ArrayList<ArticlesItem> {
     val articleList = ArrayList<ArticlesItem>(this.size)
-    this.mapTo(articleList) { it.toPojo() }
+    this.mapTo(articleList) { it.articleToPojo() }
     return articleList
 }
 
-fun List<ArticlesItem>.toRealm(articleSource: String): ArrayList<RealmArticle> {
+fun List<ArticlesItem>.articlesToRealm(articleSource: String): ArrayList<RealmArticle> {
     val articleList = ArrayList<RealmArticle>(this.size)
-    this.mapTo(articleList) { it.toRealm(articleSource) }
+    this.mapTo(articleList) { it.articleToRealm(articleSource) }
     return articleList
 }
 
-fun SourcesItem.toRealm(): RealmSource {
+fun SourcesItem.sourceToRealm(): RealmSource {
     val realmSource = RealmSource()
     realmSource.category = this.category
     realmSource.description = this.description
@@ -75,7 +75,7 @@ fun SourcesItem.toRealm(): RealmSource {
     return realmSource
 }
 
-fun RealmSource.toPojo(): SourcesItem {
+fun RealmSource.sourceToPojo(): SourcesItem {
     val sources = SourcesItem()
     sources.category = this.category
     sources.description = this.description
@@ -86,14 +86,14 @@ fun RealmSource.toPojo(): SourcesItem {
     return sources
 }
 
-fun List<SourcesItem>.toRealm(): ArrayList<RealmSource> {
+fun List<SourcesItem>.sourcesToRealm(): ArrayList<RealmSource> {
     val sourceList = ArrayList<RealmSource>(this.size)
-    this.mapTo(sourceList) { it.toRealm() }
+    this.mapTo(sourceList) { it.sourceToRealm() }
     return sourceList
 }
 
-fun List<RealmSource>.toPojo(): ArrayList<SourcesItem> {
+fun List<RealmSource>.sourcesToPojo(): ArrayList<SourcesItem> {
     val sourceList = ArrayList<SourcesItem>(this.size)
-    this.mapTo(sourceList) { it.toPojo() }
+    this.mapTo(sourceList) { it.sourceToPojo() }
     return sourceList
 }

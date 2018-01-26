@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.hilmanfatah.opennewsapi.R
-import com.jakewharton.rxbinding.support.v7.widget.scrollEvents
+import com.jakewharton.rxbinding2.support.v7.widget.scrollEvents
 import kotlinx.android.synthetic.main.refreshable_list.view.*
 
 
@@ -56,9 +56,7 @@ class RefreshableList : SwipeRefreshLayout {
     }
 
     fun setAsList() {
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
-        }
+        recyclerView.apply { layoutManager = LinearLayoutManager(context) }.setHasFixedSize(true)
     }
 
     private fun hasLastItemInListReached() = layoutManager.findLastVisibleItemPosition() == lastItemPosition
