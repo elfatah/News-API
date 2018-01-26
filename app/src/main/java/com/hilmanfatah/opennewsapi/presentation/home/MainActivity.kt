@@ -2,13 +2,13 @@ package com.hilmanfatah.opennewsapi.presentation.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.home.adapter.SourceListAdapter
+import com.hilmanfatah.opennewsapi.presentation.news.NewsListActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,7 +48,8 @@ class MainActivity : BaseActivity() {
     private fun setUpData(sources: List<SourcesItem>?) {
         sources.let {
             if (it!!.isNotEmpty())
-                sourceListAdapter.addAllData(it)
+                sourceListAdapter.clearData()
+            sourceListAdapter.addAllData(it)
 
         }
     }
@@ -64,7 +65,7 @@ class MainActivity : BaseActivity() {
         sourceListAdapter = SourceListAdapter(this)
         sourceListAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                Toast.makeText(this@MainActivity, sourceListAdapter.mDatas[position].name, Toast.LENGTH_SHORT).show()
+                startActivity(NewsListActivity.createIntent(this@MainActivity, sourceListAdapter.mDatas[position].id!!, sourceListAdapter.mDatas[position].name!!))
             }
 
         }
