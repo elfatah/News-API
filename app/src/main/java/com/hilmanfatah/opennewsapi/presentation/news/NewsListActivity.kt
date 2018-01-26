@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.View
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
-import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
+import com.hilmanfatah.opennewsapi.domain.model.NewsItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
-import com.hilmanfatah.opennewsapi.presentation.news.adapter.ArticleListAdapter
+import com.hilmanfatah.opennewsapi.presentation.news.adapter.NewsListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_news_list.*
@@ -24,7 +24,7 @@ class NewsListActivity : BaseActivity() {
     @Inject
     lateinit var newsPresenter: NewsPresenterImpl
 
-    lateinit var articleListAdapter: ArticleListAdapter
+    lateinit var newsListAdapter: NewsListAdapter
 
     companion object {
         private val ARG_SOURCE = "ARG_SOURCE"
@@ -65,25 +65,25 @@ class NewsListActivity : BaseActivity() {
 
     }
 
-    private fun setUpData(articles: List<ArticlesItem>?) {
+    private fun setUpData(articles: List<NewsItem>?) {
         articles.let {
             if (it!!.isNotEmpty())
-                articleListAdapter.clearData()
-            articleListAdapter.addAllData(it)
+                newsListAdapter.clearData()
+            newsListAdapter.addAllData(it)
 
         }
     }
 
     private fun setUpRecyclerView() {
-        list.recyclerView.adapter = articleListAdapter
+        list.recyclerView.adapter = newsListAdapter
 
     }
 
     private fun setUpAdapter() {
-        articleListAdapter = ArticleListAdapter(this)
-        articleListAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener {
+        newsListAdapter = NewsListAdapter(this)
+        newsListAdapter.mItemClickListener = object : BaseRecyclerViewAdapter.OnItemClickListener {
             override fun onItemClick(view: View, position: Int) {
-                startActivity(NewsDetailActivity.createIntent(this@NewsListActivity, articleListAdapter.mDatas[position].url!!, articleListAdapter.mDatas[position].title!!))
+                startActivity(NewsDetailActivity.createIntent(this@NewsListActivity, newsListAdapter.mDatas[position].url!!, newsListAdapter.mDatas[position].title!!))
 
             }
 

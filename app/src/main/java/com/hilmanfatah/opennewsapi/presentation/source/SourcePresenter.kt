@@ -1,4 +1,4 @@
-package com.hilmanfatah.opennewsapi.presentation.home
+package com.hilmanfatah.opennewsapi.presentation.source
 
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import io.reactivex.Flowable
@@ -6,7 +6,7 @@ import io.reactivex.Flowable
 /**
  * Created by hilmanfatah on 1/23/18.
  */
-interface HomePresenter {
+interface SourcePresenter {
 
     fun getSourcesList(): Flowable<List<SourcesItem>?>
 }

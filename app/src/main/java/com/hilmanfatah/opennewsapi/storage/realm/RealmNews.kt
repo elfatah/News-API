@@ -13,7 +13,7 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
 
-open class RealmArticle : RealmObject() {
+open class RealmNews : RealmObject() {
 
     var source: String? = null
 

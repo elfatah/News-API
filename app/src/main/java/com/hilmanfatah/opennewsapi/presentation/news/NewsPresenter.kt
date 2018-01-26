@@ -1,6 +1,6 @@
 package com.hilmanfatah.opennewsapi.presentation.news
 
-import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
+import com.hilmanfatah.opennewsapi.domain.model.NewsItem
 import io.reactivex.Flowable
 
 /**
@@ -9,7 +9,7 @@ import io.reactivex.Flowable
 interface NewsPresenter {
 
     fun getArticles(source: String)
-            : Flowable<List<ArticlesItem>?>
+            : Flowable<List<NewsItem>?>
 
 
 }

@@ -1,4 +1,4 @@
-package com.hilmanfatah.opennewsapi.presentation.home
+package com.hilmanfatah.opennewsapi.presentation.source
 
 import android.view.View
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.source_item_view.view.*
 /**
  * Created by hilmanfatah on 1/23/18.
  */
-class SourceItemView(
+class SourceViewHolder(
         itemView: View,
         mItemClickListener: BaseRecyclerViewAdapter.OnItemClickListener?,
         mLongItemClickListener: BaseRecyclerViewAdapter.OnLongItemClickListener?)

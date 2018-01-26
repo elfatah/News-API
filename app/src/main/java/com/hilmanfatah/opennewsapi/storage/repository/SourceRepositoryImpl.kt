@@ -1,8 +1,8 @@
 package com.hilmanfatah.opennewsapi.storage.repository
 
-import com.hilmanfatah.opennewsapi.api.NewsService
 import com.hilmanfatah.opennewsapi.domain.model.SourceResponse
 import com.hilmanfatah.opennewsapi.domain.repository.SourceRepository
+import com.hilmanfatah.opennewsapi.storage.api.NewsService
 import com.hilmanfatah.opennewsapi.storage.realm.RealmSource
 import com.hilmanfatah.opennewsapi.storage.sourcesToPojo
 import com.hilmanfatah.opennewsapi.storage.sourcesToRealm

@@ -1,7 +1,7 @@
 package com.hilmanfatah.opennewsapi.domain.interactor.news
 
-import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
-import com.hilmanfatah.opennewsapi.storage.repository.ArticleRepositoryImpl
+import com.hilmanfatah.opennewsapi.domain.model.NewsItem
+import com.hilmanfatah.opennewsapi.storage.repository.NewsRepositoryImpl
 import io.reactivex.Flowable
 import javax.inject.Inject
 
@@ -11,13 +11,13 @@ import javax.inject.Inject
 class GetNewsListInteractorImpl : GetNewsListInteractor {
 
     @Inject
-    lateinit var articleRepository: ArticleRepositoryImpl
+    lateinit var articleRepository: NewsRepositoryImpl
 
     @Inject
     constructor()
 
-    override fun execute(source: String): Flowable<List<ArticlesItem>?> =
-            articleRepository.getArticles(source)
+    override fun execute(source: String): Flowable<List<NewsItem>?> =
+            articleRepository.getNews(source)
                     .map { it.articles }
 
 }

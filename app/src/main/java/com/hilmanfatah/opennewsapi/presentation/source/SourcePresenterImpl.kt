@@ -1,4 +1,4 @@
-package com.hilmanfatah.opennewsapi.presentation.home
+package com.hilmanfatah.opennewsapi.presentation.source
 
 import com.hilmanfatah.opennewsapi.domain.interactor.sources.GetNewsResourcesListInteractorImpl
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
@@ -8,7 +8,7 @@ import javax.inject.Inject
 /**
  * Created by hilmanfatah on 1/23/18.
  */
-class HomePresenterImpl : HomePresenter {
+class SourcePresenterImpl : SourcePresenter {
     @Inject
     lateinit var getNewsResourcesListInteractor: GetNewsResourcesListInteractorImpl
 

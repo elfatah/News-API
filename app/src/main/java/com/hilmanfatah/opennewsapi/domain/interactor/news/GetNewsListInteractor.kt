@@ -1,6 +1,6 @@
 package com.hilmanfatah.opennewsapi.domain.interactor.news
 
-import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
+import com.hilmanfatah.opennewsapi.domain.model.NewsItem
 import io.reactivex.Flowable
 
 /**
@@ -9,6 +9,6 @@ import io.reactivex.Flowable
 interface GetNewsListInteractor {
 
 
-    fun execute(source: String): Flowable<List<ArticlesItem>?>
+    fun execute(source: String): Flowable<List<NewsItem>?>
 
 }

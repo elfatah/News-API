@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by hilmanfatah on 1/23/18.
  */
-class ArticlesItem {
+class NewsItem {
     @SerializedName("publishedAt")
     var publishedAt: String? = null
 

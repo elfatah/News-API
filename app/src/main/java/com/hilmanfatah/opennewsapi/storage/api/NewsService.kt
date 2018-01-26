@@ -1,6 +1,6 @@
-package com.hilmanfatah.opennewsapi.api
+package com.hilmanfatah.opennewsapi.storage.api
 
-import com.hilmanfatah.opennewsapi.domain.model.ArticleResponse
+import com.hilmanfatah.opennewsapi.domain.model.NewsResponse
 import com.hilmanfatah.opennewsapi.domain.model.SourceResponse
 import io.reactivex.Flowable
 import retrofit2.http.GET
@@ -11,9 +11,9 @@ import retrofit2.http.Query
  */
 interface NewsService {
     @GET("articles")
-    fun getArticles(@Query("source") source: String,
-                    @Query("apiKey") apiKey: String,
-                    @Query("sortBy") sortBy: String): Flowable<ArticleResponse>
+    fun getNews(@Query("source") source: String,
+                @Query("apiKey") apiKey: String,
+                @Query("sortBy") sortBy: String): Flowable<NewsResponse>
 
     @GET("sources")
     fun getSources(@Query("category") category: String,

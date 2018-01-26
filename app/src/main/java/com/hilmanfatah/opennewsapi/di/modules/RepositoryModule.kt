@@ -1,8 +1,8 @@
 package com.hilmanfatah.opennewsapi.di.modules
 
-import com.hilmanfatah.opennewsapi.domain.repository.ArticleRepository
+import com.hilmanfatah.opennewsapi.domain.repository.NewsRepository
 import com.hilmanfatah.opennewsapi.domain.repository.SourceRepository
-import com.hilmanfatah.opennewsapi.storage.repository.ArticleRepositoryImpl
+import com.hilmanfatah.opennewsapi.storage.repository.NewsRepositoryImpl
 import com.hilmanfatah.opennewsapi.storage.repository.SourceRepositoryImpl
 import dagger.Module
 import dagger.Provides
@@ -20,6 +20,6 @@ class RepositoryModule {
 
     @Provides
     @Singleton
-    fun providesArticleRepo(articleRepositoryImpl: ArticleRepositoryImpl): ArticleRepository = articleRepositoryImpl
+    fun providesArticleRepo(articleRepositoryImpl: NewsRepositoryImpl): NewsRepository = articleRepositoryImpl
 
 }

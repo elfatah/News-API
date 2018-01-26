@@ -1,9 +1,9 @@
 package com.hilmanfatah.opennewsapi.di.modules
 
-import com.hilmanfatah.opennewsapi.presentation.home.HomePresenter
-import com.hilmanfatah.opennewsapi.presentation.home.HomePresenterImpl
 import com.hilmanfatah.opennewsapi.presentation.news.NewsPresenter
 import com.hilmanfatah.opennewsapi.presentation.news.NewsPresenterImpl
+import com.hilmanfatah.opennewsapi.presentation.source.SourcePresenter
+import com.hilmanfatah.opennewsapi.presentation.source.SourcePresenterImpl
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -16,7 +16,7 @@ class PresenterModule {
 
     @Provides
     @Singleton
-    fun provideHomePresenter(homePresenter: HomePresenterImpl): HomePresenter = homePresenter
+    fun provideHomePresenter(sourcePresenter: SourcePresenterImpl): SourcePresenter = sourcePresenter
 
     @Provides
     @Singleton

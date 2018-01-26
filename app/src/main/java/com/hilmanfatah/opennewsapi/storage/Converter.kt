@@ -1,10 +1,10 @@
 package com.hilmanfatah.opennewsapi.storage
 
-import com.hilmanfatah.opennewsapi.domain.model.ArticlesItem
+import com.hilmanfatah.opennewsapi.domain.model.NewsItem
 import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.domain.model.UrlToLogos
-import com.hilmanfatah.opennewsapi.storage.realm.RealmArticle
 import com.hilmanfatah.opennewsapi.storage.realm.RealmLogo
+import com.hilmanfatah.opennewsapi.storage.realm.RealmNews
 import com.hilmanfatah.opennewsapi.storage.realm.RealmSource
 import java.util.*
 
@@ -28,8 +28,8 @@ fun RealmLogo.toPojo(): UrlToLogos {
 }
 
 
-fun ArticlesItem.articleToRealm(articleSource: String): RealmArticle {
-    val realmArticle = RealmArticle()
+fun NewsItem.articleToRealm(articleSource: String): RealmNews {
+    val realmArticle = RealmNews()
     realmArticle.source = articleSource
     realmArticle.publishedAt = this.publishedAt
     realmArticle.author = this.author
@@ -41,8 +41,8 @@ fun ArticlesItem.articleToRealm(articleSource: String): RealmArticle {
 }
 
 
-fun RealmArticle.articleToPojo(): ArticlesItem {
-    val article = ArticlesItem()
+fun RealmNews.articleToPojo(): NewsItem {
+    val article = NewsItem()
     article.publishedAt = this.publishedAt
     article.author = this.author
     article.description = this.description
@@ -52,14 +52,14 @@ fun RealmArticle.articleToPojo(): ArticlesItem {
     return article
 }
 
-fun List<RealmArticle>.articlesToPojos(): ArrayList<ArticlesItem> {
-    val articleList = ArrayList<ArticlesItem>(this.size)
+fun List<RealmNews>.articlesToPojos(): ArrayList<NewsItem> {
+    val articleList = ArrayList<NewsItem>(this.size)
     this.mapTo(articleList) { it.articleToPojo() }
     return articleList
 }
 
-fun List<ArticlesItem>.articlesToRealm(articleSource: String): ArrayList<RealmArticle> {
-    val articleList = ArrayList<RealmArticle>(this.size)
+fun List<NewsItem>.articlesToRealm(articleSource: String): ArrayList<RealmNews> {
+    val articleList = ArrayList<RealmNews>(this.size)
     this.mapTo(articleList) { it.articleToRealm(articleSource) }
     return articleList
 }

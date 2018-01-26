@@ -4,7 +4,7 @@ import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.hilmanfatah.opennewsapi.api.NewsService
+import com.hilmanfatah.opennewsapi.storage.api.NewsService
 import dagger.Module
 import dagger.Provides
 import io.realm.RealmObject
