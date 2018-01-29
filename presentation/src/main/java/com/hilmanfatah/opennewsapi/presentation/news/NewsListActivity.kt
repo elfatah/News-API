@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.hilmanfatah.domain.model.NewsItem
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
-import com.hilmanfatah.opennewsapi.domain.model.NewsItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.news.adapter.NewsListAdapter
@@ -76,6 +76,7 @@ class NewsListActivity : BaseActivity() {
 
     private fun setUpRecyclerView() {
         list.recyclerView.adapter = newsListAdapter
+        list.setOnRefreshListener { loadData() }
 
     }
 

@@ -1,7 +1,7 @@
 package com.hilmanfatah.opennewsapi.presentation.source
 
-import com.hilmanfatah.opennewsapi.domain.interactor.sources.GetNewsResourcesListInteractorImpl
-import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
+import com.hilmanfatah.domain.interactor.sources.GetNewsResourcesListInteractorImpl
+import com.hilmanfatah.domain.model.SourcesItem
 import io.reactivex.Flowable
 import javax.inject.Inject
 

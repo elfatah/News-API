@@ -40,7 +40,9 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun okHttpClient(loggingInterceptor: HttpLoggingInterceptor, chuckInterceptor: ChuckInterceptor, cache: Cache) =
+    fun okHttpClient(
+            loggingInterceptor: HttpLoggingInterceptor,
+            chuckInterceptor: ChuckInterceptor, cache: Cache) =
             OkHttpClient.Builder()
                     .readTimeout(60, TimeUnit.SECONDS)
                     .connectTimeout(60, TimeUnit.SECONDS)

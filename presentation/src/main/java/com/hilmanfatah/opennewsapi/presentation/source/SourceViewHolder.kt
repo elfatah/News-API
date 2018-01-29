@@ -1,7 +1,7 @@
 package com.hilmanfatah.opennewsapi.presentation.source
 
 import android.view.View
-import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
+import com.hilmanfatah.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.viewholder.BaseItemViewHolder
 import kotlinx.android.synthetic.main.source_item_view.view.*

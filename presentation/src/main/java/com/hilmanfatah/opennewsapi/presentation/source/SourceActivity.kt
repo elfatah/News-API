@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import com.hilmanfatah.opennewsapi.NewsApplication
 import com.hilmanfatah.opennewsapi.R
-import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.presentation.base.BaseActivity
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.news.NewsListActivity
 import com.hilmanfatah.opennewsapi.presentation.source.adapter.SourceListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.refreshable_list.view.*
 import javax.inject.Inject
@@ -32,6 +32,7 @@ class SourceActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         loadData()
+        Realm.getDefaultInstance()
     }
 
     private fun loadData() {
@@ -45,7 +46,7 @@ class SourceActivity : BaseActivity() {
 
     }
 
-    private fun setUpData(sources: List<SourcesItem>?) {
+    private fun setUpData(sources: List<com.hilmanfatah.domain.model.SourcesItem>?) {
         sources.let {
             if (it!!.isNotEmpty())
                 sourceListAdapter.clearData()

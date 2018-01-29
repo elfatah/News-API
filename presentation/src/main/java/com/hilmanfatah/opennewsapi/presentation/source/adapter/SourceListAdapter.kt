@@ -2,8 +2,8 @@ package com.hilmanfatah.opennewsapi.presentation.source.adapter
 
 import android.content.Context
 import android.view.ViewGroup
+import com.hilmanfatah.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.R
-import com.hilmanfatah.opennewsapi.domain.model.SourcesItem
 import com.hilmanfatah.opennewsapi.presentation.base.adapter.BaseRecyclerViewAdapter
 import com.hilmanfatah.opennewsapi.presentation.source.SourceViewHolder
 

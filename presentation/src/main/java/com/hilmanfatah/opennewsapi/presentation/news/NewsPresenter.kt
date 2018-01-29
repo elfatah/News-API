@@ -1,6 +1,6 @@
 package com.hilmanfatah.opennewsapi.presentation.news
 
-import com.hilmanfatah.opennewsapi.domain.model.NewsItem
+import com.hilmanfatah.domain.model.NewsItem
 import io.reactivex.Flowable
 
 /**

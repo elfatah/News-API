@@ -1,9 +1,9 @@
 package com.hilmanfatah.opennewsapi.di.modules
 
-import com.hilmanfatah.opennewsapi.domain.repository.NewsRepository
-import com.hilmanfatah.opennewsapi.domain.repository.SourceRepository
-import com.hilmanfatah.opennewsapi.storage.repository.NewsRepositoryImpl
-import com.hilmanfatah.opennewsapi.storage.repository.SourceRepositoryImpl
+import com.hilmanfatah.data.repository.NewsRepositoryImpl
+import com.hilmanfatah.data.repository.SourceRepositoryImpl
+import com.hilmanfatah.domain.repository.NewsRepository
+import com.hilmanfatah.domain.repository.SourceRepository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
