@@ -1,0 +1,165 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
+    }
+}
+
+ext {
+    //Android
+    androidBuildToolsVersion = "27.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 27
+    androidCompileSdkVersion = 27
+
+    //Libraries
+    supportLibVersion = "27.0.2"
+    rxBindingVersion = "2.0.0"
+    daggerVersion = '2.8'
+    recyclerViewVersion = '21.0.3'
+    rxJavaVersion = '2.1.5'
+    rxAndroidVersion = '2.0.1'
+    okHttpVersion = '3.9.1'
+    kotlinVersion = '1.2.21'
+    rxlifecycleVersion = '2.2.1'
+    retrofitVersion = '2.3.0'
+    chuckVersion = '1.1.0'
+    frescoVersion = '1.5.0'
+    stethoVersion = '1.5.0'
+    stethoRealmVersion = '2.1.0'
+    loggingInterceptorVersion = '3.9.1'
+    gsonVersion = "2.8.0"
+
+    //Testing
+    jUnitVersion = '4.12'
+    assertJVersion = '1.7.1'
+    dexmakerVersion = '1.0'
+    espressoVersion = '2.0'
+
+    //Development
+    leakCanaryVersion = '1.3.1'
+
+    def kotlin = [
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    ]
+
+    def google = [
+            recyclerView: "com.android.support:recyclerview-v7:${supportLibVersion}",
+            appCompatv7 : "com.android.support:appcompat-v7:$supportLibVersion",
+            supporv4    : "com.android.support:support-v4:$supportLibVersion",
+            design      : "com.android.support:design:$supportLibVersion",
+            cardview    : "com.android.support:cardview-v7:$supportLibVersion"
+    ]
+
+    def rxJava = [
+            rxJava                     : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid                  : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxLifeCycle                : "com.trello.rxlifecycle2:rxlifecycle-components:$rxlifecycleVersion",
+            rxBindingKotlin            : "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBindingVersion",
+            rxBindingKotlinSupport     : "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBindingVersion",
+            rxBindingKotlinAppcompat   : "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBindingVersion",
+            rxBindingKotlinRecyclerview: "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBindingVersion",
+    ]
+
+    def networking = [
+            gson             : "com.google.code.gson:gson:$gsonVersion",
+            okHttp       : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            rxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            retrofit     : "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    ]
+
+    def loggingInterceptor = [
+            chuck             : "com.readystatesoftware.chuck:library:$chuckVersion",
+            chuckRelease      : "com.readystatesoftware.chuck:library-no-op:$chuckVersion",
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+    ]
+
+    def imageLoader = [
+            fresco: "com.facebook.fresco:fresco:$frescoVersion",
+
+    ]
+
+    def stetho = [
+
+            stetho     : "com.facebook.stetho:stetho:$stethoVersion",
+            stethoRealm: "com.uphyca:stetho_realm:$stethoRealmVersion"
+    ]
+
+    def dependencyInjection = [
+            dagger        : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}"
+    ]
+
+    def test = [
+            junit   : "junit:junit:${jUnitVersion}",
+            espresso: "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+    ]
+    presentationDependencies = [
+            [configuration: "implementation", dependency: dependencyInjection.dagger],
+            [configuration: "kapt", dependency: dependencyInjection.daggerCompiler],
+            [configuration: "implementation", dependency: google.appCompatv7],
+            [configuration: "implementation", dependency: google.design],
+            [configuration: "implementation", dependency: google.recyclerView],
+            [configuration: "implementation", dependency: google.supporv4],
+            [configuration: "implementation", dependency: google.cardview],
+            [configuration: "implementation", dependency: kotlin.kotlin],
+            [configuration: "implementation", dependency: rxJava.rxJava],
+            [configuration: "implementation", dependency: rxJava.rxAndroid],
+            [configuration: "implementation", dependency: rxJava.rxBindingKotlin],
+            [configuration: "implementation", dependency: rxJava.rxBindingKotlinAppcompat],
+            [configuration: "implementation", dependency: rxJava.rxBindingKotlinRecyclerview],
+            [configuration: "implementation", dependency: rxJava.rxBindingKotlinSupport],
+            [configuration: "implementation", dependency: rxJava.rxLifeCycle],
+            [configuration: "implementation", dependency: imageLoader.fresco],
+            [configuration: "implementation", dependency: networking.gson],
+            [configuration: "implementation", dependency: networking.okHttp],
+            [configuration: "implementation", dependency: networking.gsonConverter],
+            [configuration: "implementation", dependency: networking.retrofit],
+            [configuration: "implementation", dependency: networking.rxAdapter],
+            [configuration: "implementation", dependency: loggingInterceptor.loggingInterceptor],
+            [configuration: "implementation", dependency: stetho.stetho],
+            [configuration: "implementation", dependency: stetho.stethoRealm],
+            [configuration: "debugImplementation", dependency: loggingInterceptor.chuck],
+            [configuration: "releaseImplementation", dependency: loggingInterceptor.chuckRelease],
+            [configuration: "androidTestImplementation", dependency: test.junit],
+            [configuration: "androidTestImplementation", dependency: test.espresso],
+
+    ]
+
+
+    domainDependencies = [
+            [configuration: "implementation", dependency: kotlin.kotlin],
+            [configuration: "implementation", dependency: dependencyInjection.dagger],
+            [configuration: "kapt", dependency: dependencyInjection.daggerCompiler],
+            [configuration: "implementation", dependency: rxJava.rxJava],
+            [configuration: "implementation", dependency: rxJava.rxAndroid],
+            [configuration: "implementation", dependency: networking.gson],
+            [configuration: "androidTestImplementation", dependency: test.junit],
+            [configuration: "androidTestImplementation", dependency: test.espresso],
+
+    ]
+
+
+    dataDependencies = [
+            [configuration: "implementation", dependency: kotlin.kotlin],
+            [configuration: "implementation", dependency: dependencyInjection.dagger],
+            [configuration: "kapt", dependency: dependencyInjection.daggerCompiler],
+            [configuration: "implementation", dependency: loggingInterceptor.loggingInterceptor],
+            [configuration: "implementation", dependency: networking.okHttp],
+            [configuration: "implementation", dependency: networking.gsonConverter],
+            [configuration: "implementation", dependency: networking.retrofit],
+            [configuration: "implementation", dependency: networking.rxAdapter],
+            [configuration: "androidTestImplementation", dependency: test.junit],
+            [configuration: "androidTestImplementation", dependency: test.espresso],
+
+
+    ]
+
+
+    developmentDependencies = [
+    ]
+}

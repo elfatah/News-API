@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'realm-android'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion setup.compileSdkVersion
+    buildToolsVersion setup.buildToolsVersion
+
+    defaultConfig {
+        applicationId setup.applicationId
+        minSdkVersion setup.minSdkVersion
+        targetSdkVersion setup.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
+
+    rootProject.presentationDependencies.each {
+        add(it.configuration, it.dependency, it.options)
+    }
+
+}
